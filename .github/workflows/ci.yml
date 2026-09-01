@@ -1,15 +1,16 @@
 name: CI
 on: push
-jobs:
- test:
-  runs-on: ubuntu-latest
-  steps:
-    - uses: actions/checkout@v4
-    - run: echo "Runnig tests"
- deploy:
-   needs: test
+env: 
+  APP_name: my-app
+jobs: 
+  build:
    runs-on: ubuntu-latest
+   env:
+    NODE_ENV: production
    steps:
-    - run: echo "Deploying (only if test pssed)"
+    - name: Show them
+      env:
+       GREETING: hello
+      run: echo "SAPP_NAME $NODE_ENV $GREETING"
 
 
