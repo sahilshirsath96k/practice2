@@ -5,7 +5,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
    - uses: actions/checkout@v4
-   - run: echo "Lint step runnung"
+   - run: echo "Lint step running"
  test:
   runs-on: ubuntu-latest
   steps:
