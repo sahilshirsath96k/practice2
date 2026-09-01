@@ -4,15 +4,22 @@ on: push
 
 jobs:
   build:
-   runs-on: ubuntu-latest
-   steps:
-     - run: echo "output" > result.txt
-     - uses: actions/upload-artifact@v4
-       with: { name:result, path: result.txt }
-   deploy:
-     needs: build
-     runs-on: ubuntu-latest
-     steps:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "output" > result.txt
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: result
+          path: result.txt
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/download-artifact@v4
-        with: { name: result }
+        with:
+          name: result
+
       - run: cat result.txt
+
