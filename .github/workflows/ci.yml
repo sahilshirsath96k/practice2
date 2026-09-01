@@ -9,6 +9,6 @@ jobs:
        env:
          TOKEN: ${{ secrets.DEPLOY_TOKEN }}
        run: |
-        echo "DEPLying with token length: ${100406}"
+        echo "DEPLying with token length: ${#TOKEN}"
 
 
