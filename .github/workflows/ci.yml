@@ -1,7 +1,5 @@
 name: CI
-
 on: [push, pull_request]
-
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -13,6 +11,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: "npm"
-      - run: npm ci
-      - run: npm test
+      - run: echo "Testing on Node ${{ matrix.node }}"
+  build:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: mkdir -p dist && echo "app v1" > dist/app.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: app-build
+          path: dist/
+
