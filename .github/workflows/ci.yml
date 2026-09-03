@@ -21,5 +21,5 @@ jobs:
       - uses: actions/checkout@v4
       - name: Deploy
         env:
-          TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+          TOKEN: ${{ secrets.sahil }}
         run: echo "Deploying to production"
